@@ -20,3 +20,4 @@ commit part 3
 resilience4j
 Oauth2
 Inventory
+FeignClient
