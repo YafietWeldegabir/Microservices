@@ -14,3 +14,9 @@ Commit part 2
  Spring cloud bus
  RabbitMq
 Keycloack authorization
+
+
+commit part 3
+resilience4j
+Oauth2
+Inventory
