@@ -4,16 +4,14 @@ package yafiet.net.orderservice.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
+import org.springframework.web.bind.annotation.*;
 import yafiet.net.orderservice.dto.OrderDto;
 import yafiet.net.orderservice.model.Order;
 import yafiet.net.orderservice.repository.OrderRepository;
 
+import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.ExecutorService;
 
 @RestController
 @RequestMapping("/api/order")
@@ -22,6 +20,7 @@ import java.util.concurrent.ExecutorService;
 public class OrderController {
 
     private final OrderRepository orderRepository;
+    private final Resilience4JCircuitBreakerFactory circuitBreakerFactory;
 
     @PostMapping
     public String placeOrder(@RequestBody OrderDto orderDto) {
@@ -30,10 +29,13 @@ public class OrderController {
             order.setOrderNumber(UUID.randomUUID().toString());
 
             orderRepository.save(order);
-            log.info("Sending Order Details with Order Id {} to Notification Service", order.getId());
-             return "Order Place Successfully";
+              return "Order Place Successfully";
     }
 
+    @GetMapping
+    List<Order> findAll(){
+        return orderRepository.findAll();
+    }
     private Boolean handleErrorCase() {
         return false;
     }

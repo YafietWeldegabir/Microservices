@@ -1,0 +1,2 @@
+INSERT INTO inventory VALUES ('3', 'IPHONE_12_RED', '100');
+INSERT INTO inventory VALUES ('4', 'IPHONE_12_GREY', '0');
