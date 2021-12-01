@@ -21,3 +21,4 @@ resilience4j
 Oauth2
 Inventory
 FeignClient
+
