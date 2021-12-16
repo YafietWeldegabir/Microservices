@@ -22,3 +22,5 @@ Oauth2
 Inventory
 FeignClient
 
+commit part 4
+order - notification: Rabbitmq impl.
