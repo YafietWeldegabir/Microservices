@@ -6,9 +6,11 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.web.bind.annotation.*;
-import yafiet.net.orderservice.dto.OrderDto;
-import yafiet.net.orderservice.model.Order;
-import yafiet.net.orderservice.repository.OrderRepository;
+import yafiet.net.orderservice.dto.*;
+import yafiet.net.orderservice.model.*;
+import yafiet.net.orderservice.repository.*;
+import org.springframework.cloud.stream.function.*;
+
 
 import java.util.List;
 import java.util.UUID;
@@ -29,7 +31,10 @@ public class OrderController {
             order.setOrderNumber(UUID.randomUUID().toString());
 
             orderRepository.save(order);
-              return "Order Place Successfully";
+            log.info("Sending Order Details with Order Id {} to Notification Service");
+            streamBridge.send("notificationEventSupplier-out-0", order.getId());
+            return "Order Place Successfully";
+
     }
 
     @GetMapping
