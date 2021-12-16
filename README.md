@@ -1,5 +1,5 @@
 # Microservices
-Microservices, CI/CD, Jenkins,...
+Microservices, RabbitMQ,CI/CD Jenkins,...
 
 commit "part1"
 Spring cloud netflix Eureka
@@ -24,3 +24,6 @@ FeignClient
 
 commit part 4
 order - notification: Rabbitmq impl.
+
+commot part 5
+zipkin
