@@ -26,4 +26,4 @@ commit part 4
 order - notification: Rabbitmq impl.
 
 commot part 5
-zipkin
+zipkin, slueth
