@@ -6,9 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.cloud.circuitbreaker.resilience4j.Resilience4JCircuitBreakerFactory;
 import org.springframework.web.bind.annotation.*;
-import yafiet.net.orderservice.dto.*;
-import yafiet.net.orderservice.model.*;
-import yafiet.net.orderservice.repository.*;
+import yafiet.net.orderservice.dto.OrderDto;
+import yafiet.net.orderservice.model.OrderLineItems;
+import yafiet.net.orderservice.model.Order;
+import yafiet.net.orderservice.repository.OrderRepository;
 import org.springframework.cloud.stream.function.*;
 
 
